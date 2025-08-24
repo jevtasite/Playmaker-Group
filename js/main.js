@@ -17,28 +17,22 @@
 
 
     // Sticky Navbar 
-    $(window).scroll(function () {
+   /* $(window).scroll(function () {
         if ($(this).scrollTop() > 45) {
             $('.navbar').addClass('sticky-top shadow-sm');
         } else {
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
-    }); 
+    }); */
     
     
     // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
+$(document).ready(function () {
+    $('.back-to-top').click(function (e) {
+        e.preventDefault();
+        $('html, body').stop().animate({ scrollTop: 0 }, 600, 'swing');
     });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
-
+});
 
     // Skills
     $('.skill').waypoint(function () {
@@ -95,14 +89,14 @@
 // Added 
 
 // Scroll effect 
-window.addEventListener('scroll', function() {
+/*window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {  
         navbar.classList.add('shrink');
     } else {
         navbar.classList.remove('shrink');
     }
-});
+}); */
 
 // Smooth scrolling for all anchor links using jQuery
 $(document).ready(function() {
@@ -126,9 +120,29 @@ navbarCollapse.addEventListener('show.bs.collapse', () => {
 });
 
 navbarCollapse.addEventListener('hide.bs.collapse', () => {
-    // Use a small timeout to allow smooth closing
     navbarCollapse.style.transition = 'height 0.5s ease';
 });
 
+//Sticky & Shrink navbar
 
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+
+    if (window.innerWidth >= 992) { // Desktop
+        if (window.scrollY > 45) {
+            navbar.classList.add('sticky-top', 'shadow-sm', 'shrink');
+        } else {
+            navbar.classList.remove('sticky-top', 'shadow-sm', 'shrink');
+        }
+    } else { // Mobile
+        navbar.classList.remove('sticky-top', 'shadow-sm', 'shrink'); 
+    }
+});
+
+window.addEventListener('resize', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.innerWidth < 992) {
+        navbar.classList.remove('sticky-top', 'shadow-sm', 'shrink');
+    }
+});
 
