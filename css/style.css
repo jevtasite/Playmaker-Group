@@ -70,7 +70,7 @@ body {
     visibility: hidden;
     transition: opacity .5s ease-out, visibility 0s linear .5s;
     z-index: 99999;
-    overflow: hidden; /* ensures nothing spills */
+    overflow: hidden; 
 }
 
 #spinner.show {
