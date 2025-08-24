@@ -233,6 +233,13 @@ h6,
   }
 }
 
+@media (max-width: 991.98px) {
+    .navbar {
+        background: #fff; 
+        box-shadow: 0 10px 8px rgba(0,0,0,0.1);
+    }
+}
+
 
 @media (min-width: 992px) {
     .navbar-light {
@@ -851,3 +858,30 @@ p {
     transform: rotate(90deg);
 }
 
+/*** Gallery Modal ***/
+.gallery-img {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+#prevImage,
+#nextImage {
+    background: rgba(255, 255, 255, 0.6); 
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#prevImage:hover,
+#nextImage:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}

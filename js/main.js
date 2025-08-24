@@ -198,3 +198,50 @@ $(document).ready(function() {
         $('html, body').stop().animate({ scrollTop: 0 }, 600, 'swing');
     });
 });
+
+// Gallery Modal 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
+    const modal = new bootstrap.Modal(document.getElementById('galleryModal'));
+    const modalImage = document.getElementById('modalImage');
+    const prevBtn = document.getElementById('prevImage');
+    const nextBtn = document.getElementById('nextImage');
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        currentIndex = index;
+        modalImage.src = galleryImages[currentIndex].src;
+    }
+
+    // Open modal on click
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            showImage(index);
+            modal.show();
+        });
+    });
+
+    // Previous image
+    prevBtn.addEventListener('click', function() {
+        let newIndex = currentIndex - 1;
+        if(newIndex < 0) newIndex = galleryImages.length - 1;
+        showImage(newIndex);
+    });
+
+    // Next image
+    nextBtn.addEventListener('click', function() {
+        let newIndex = currentIndex + 1;
+        if(newIndex >= galleryImages.length) newIndex = 0;
+        showImage(newIndex);
+    });
+
+    // Navigate with arrow keys
+    document.addEventListener('keydown', function(e) {
+        if(modal._isShown) {
+            if(e.key === "ArrowLeft") prevBtn.click();
+            if(e.key === "ArrowRight") nextBtn.click();
+        }
+    });
+});

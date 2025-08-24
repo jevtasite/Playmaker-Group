@@ -483,25 +483,26 @@
             <div class="col-md-6 col-lg-3">
                 <p class="section-title text-white h5 mb-4">Gallery<span></span></p>
                 <div class="row g-2 justify-content-center">
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-1.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-2.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-3.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-4.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-5.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
-                    </div>
-                </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-1.jpg" alt="Image">
+    </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-2.jpg" alt="Image">
+    </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-3.jpg" alt="Image">
+    </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-4.jpg" alt="Image">
+    </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-5.jpg" alt="Image">
+    </div>
+    <div class="col-4">
+        <img class="img-fluid gallery-img" src="img/portfolio-6.jpg" alt="Image">
+    </div>
+</div>
+
 
                 <!-- Social Media Centered Below Gallery -->
                 <div class="d-flex justify-content-center pt-4">
@@ -523,6 +524,24 @@
 </div>
 <!-- Footer End -->
 
+<!-- Full Image Modal with Arrows -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0 position-relative">
+      <div class="modal-body p-0">
+        <img id="modalImage" src="" class="img-fluid w-100" alt="Full Image">
+
+        <!-- Navigation Arrows -->
+        <button type="button" class="btn btn-light position-absolute top-50 start-0 translate-middle-y" id="prevImage" style="opacity:0.7;">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button type="button" class="btn btn-light position-absolute top-50 end-0 translate-middle-y" id="nextImage" style="opacity:0.7;">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
         <!-- <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
