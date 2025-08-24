@@ -82,7 +82,7 @@ body {
 .back-to-top {
   position: fixed;
   display: none;
-  right: 45px;
+  right: 20px;
   bottom: 45px;
   z-index: 99;
 }
