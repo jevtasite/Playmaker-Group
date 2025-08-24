@@ -884,7 +884,7 @@ p {
   transition: all 0.3s ease;
 }
 
-/* Shine effect */
+/* Team Shine effect */
 .team-item::before {
   content: "";
   position: absolute;
@@ -905,4 +905,18 @@ p {
 
 .team-item:hover::before {
   left: 125%;
+}
+
+/*** Contact ***/
+
+/* Only on mobile screens (up to 767.98px) */
+@media (max-width: 767.98px) {
+  #contact .col-md-6,
+  #contact .col-lg-3 {
+    text-align: center; /* Center all columns */
+  }
+
+  #contact .section-title {
+    justify-content: center; /* Center the underline spans if you have them styled with flex */
+  }
 }
