@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
   --primary: #323bb4;
-  --secondary: #e0a800;
+  --secondary: #ff0000;
   --light: #f6f4f9;
   --dark: #04000b;
 }
@@ -41,15 +41,16 @@ body {
 }
 
 .btn-secondary {
-  background-color: #ffc107 !important;
-  border-color: #e0a800 !important;
+  background-color: #ff0000 !important; /* Bright red */
+  border-color: #ff0000 !important;
   font-weight: 550 !important;
+  color: #fff !important; /* White text for contrast */
 }
 
 .btn-secondary:hover {
-  background-color: #e0a800 !important;
-  border-color: #c69500 !important;
-  box-shadow: 0 12px 25px #c69500;
+  background-color: #cc0000 !important; /* Darker red */
+  border-color: #cc0000 !important;
+  box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4); /* Soft red glow */
 }
 
 .btn-light {
@@ -61,7 +62,7 @@ body {
 }
 
 .text-secondary {
-  color: #e0a800 !important;
+  color: #ff0000 !important;
 }
 
 /*** Spinner ***/
@@ -83,7 +84,7 @@ body {
   position: fixed;
   display: none;
   right: 20px;
-  bottom: 45px;
+  bottom: 25px;
   z-index: 99;
 }
 
@@ -279,8 +280,8 @@ h6,
   }
 
   .sticky-top.navbar-light .btn {
-    color: var(--dark);
-    background: var(--secondary);
+    color: #fff;
+    background: #ff0000;
   }
 }
 
@@ -661,7 +662,7 @@ h6,
   font-style: italic;
   font-weight: bold;
   padding-right: 7px;
-  background: linear-gradient(90deg, #ff8800 0%, #fff 50%, #ff8800 100%);
+  background: linear-gradient(90deg, #ff0000 0%, #fff 50%, #ff0000 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -795,7 +796,7 @@ p {
 }
 
 .navbar-toggler .fa-bars {
-  color: #ffc107;
+  color: #ff0000;
   font-size: 24px;
   transition: transform 0.3s ease, color 0.3s ease;
   transform: rotate(0deg);
@@ -803,7 +804,7 @@ p {
 
 .navbar-toggler:hover {
   background-color: #323bb4;
-  border-color: #ffc107;
+  border-color: #ff0000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -813,16 +814,6 @@ p {
 
 .navbar-toggler:not(.collapsed) .fa-bars {
   transform: rotate(90deg);
-}
-
-/*** Back to top ***/
-
-.backToTop {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
 }
 
 /*** Gallery Modal ***/
@@ -863,7 +854,7 @@ p {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     margin: 20px;
     text-align: center;
-    border-top: 4px solid #e0a800;
+    border-top: 4px solid #ff0000;
   }
 }
 
