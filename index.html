@@ -436,31 +436,35 @@
               <ul class="list-inline mb-5" id="portfolio-flters">
                 <li class="mx-2 active" data-filter="*">All</li>
                 <li class="mx-2" data-filter=".web">Video Highlights</li>
-                <li class="mx-2" data-filter=".graphic">Matchday Designs</li>
-                <li class="mx-2" data-filter=".video">Feed</li>
+                <li class="mx-2" data-filter=".design">Graphic Design</li>
+                <li class="mx-2" data-filter=".marketing">Feed</li>
               </ul>
             </div>
           </div>
 
           <!-- Portfolio Items -->
           <div class="row g-4 portfolio-container">
-            <!-- Example Project -->
+            <!-- Portfolio Item 1 -->
             <div
               class="col-lg-4 col-md-6 portfolio-item web wow fadeInUp"
               data-wow-delay="0.1s"
+              data-title="Content Creation"
+              data-category="Video Highlights"
+              data-description="We created professional video highlight reels tailored for social media and client promotion."
+              data-main="img/portfolio-1.png"
+              data-images="img/portfolio-1.png,img/portfolio-1.png,img/portfolio-1.png"
             >
               <div class="rounded overflow-hidden">
                 <div class="position-relative overflow-hidden">
                   <img
                     class="img-fluid w-100"
                     src="img/portfolio-1.png"
-                    alt="Client Website"
+                    alt="Content Creation"
                   />
                   <div class="portfolio-overlay">
                     <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="img/portfolio-1.png"
-                      data-lightbox="portfolio"
+                      class="btn btn-square btn-outline-light mx-1 open-overlay"
+                      href="#"
                       ><i class="fa fa-eye"></i
                     ></a>
                     <a
@@ -478,73 +482,81 @@
               </div>
             </div>
 
+            <!-- Portfolio Item 2 -->
             <div
-              class="col-lg-4 col-md-6 portfolio-item graphic wow fadeInUp"
-              data-wow-delay="0.3s"
+              class="col-lg-4 col-md-6 portfolio-item design wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-title="Brand Identity"
+              data-category="Graphic Design"
+              data-description="Full brand identity design including logos, color palette, and typography for consistent branding."
+              data-main="img/portfolio-2.png"
+              data-images="img/portfolio-2.png,img/portfolio-2.png,img/portfolio-2.png"
             >
               <div class="rounded overflow-hidden">
                 <div class="position-relative overflow-hidden">
                   <img
                     class="img-fluid w-100"
                     src="img/portfolio-2.png"
-                    alt="Social Media Graphics"
+                    alt="Brand Identity"
                   />
                   <div class="portfolio-overlay">
                     <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="img/portfolio-2.png"
-                      data-lightbox="portfolio"
+                      class="btn btn-square btn-outline-light mx-1 open-overlay"
+                      href="#"
                       ><i class="fa fa-eye"></i
                     ></a>
                     <a
                       class="btn btn-square btn-outline-light mx-1"
-                      href="https://www.behance.net/gallery/228901573/Matchday-Designs"
+                      href="#"
                       target="_blank"
                       ><i class="fa fa-link"></i
                     ></a>
                   </div>
                 </div>
                 <div class="bg-light p-4">
-                  <p class="text-primary fw-medium mb-2">Matchday Designs</p>
-                  <h5 class="lh-base mb-0">Designs</h5>
+                  <p class="text-primary fw-medium mb-2">Graphic Design</p>
+                  <h5 class="lh-base mb-0">Brand Identity</h5>
                 </div>
               </div>
             </div>
 
+            <!-- Portfolio Item 3 -->
             <div
-              class="col-lg-4 col-md-6 portfolio-item video wow fadeInUp"
-              data-wow-delay="0.5s"
+              class="col-lg-4 col-md-6 portfolio-item marketing wow fadeInUp"
+              data-wow-delay="0.3s"
+              data-title="Ad Campaign"
+              data-category="Digital Marketing"
+              data-description="Targeted ad campaign that increased client engagement and boosted conversions significantly."
+              data-main="img/portfolio-3.png"
+              data-images="img/portfolio-3.png,img/portfolio-3.png,img/portfolio-3.png"
             >
               <div class="rounded overflow-hidden">
                 <div class="position-relative overflow-hidden">
                   <img
                     class="img-fluid w-100"
                     src="img/portfolio-3.png"
-                    alt="Video Editing"
+                    alt="Ad Campaign"
                   />
                   <div class="portfolio-overlay">
                     <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="img/portfolio-3.png"
-                      data-lightbox="portfolio"
+                      class="btn btn-square btn-outline-light mx-1 open-overlay"
+                      href="#"
                       ><i class="fa fa-eye"></i
                     ></a>
                     <a
                       class="btn btn-square btn-outline-light mx-1"
-                      href="https://www.behance.net/gallery/228901431/Feed"
+                      href="#"
                       target="_blank"
                       ><i class="fa fa-link"></i
                     ></a>
                   </div>
                 </div>
                 <div class="bg-light p-4">
-                  <p class="text-primary fw-medium mb-2">Feed</p>
-                  <h5 class="lh-base mb-0">Designs</h5>
+                  <p class="text-primary fw-medium mb-2">Digital Marketing</p>
+                  <h5 class="lh-base mb-0">Ad Campaign</h5>
                 </div>
               </div>
             </div>
-
-            <!-- Duplicate / Adjust more items as needed -->
           </div>
         </div>
       </div>
@@ -820,6 +832,22 @@
                 <i class="fas fa-arrow-right"></i>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Overlay -->
+      <div class="portfolio-overlay-page" id="portfolioOverlay">
+        <span class="close-overlay"></span>
+        <div class="overlay-content">
+          <div class="main-image-container">
+            <img id="overlayMainImage" src="" alt="" />
+          </div>
+          <div id="overlayTitle"></div>
+          <div id="overlayCategory"></div>
+          <div id="overlayDescription"></div>
+          <div class="overlay-thumbnails" id="overlayThumbnails">
+            <!-- Thumbnails injected dynamically -->
           </div>
         </div>
       </div>

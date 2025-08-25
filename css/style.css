@@ -900,14 +900,119 @@ p {
 
 /*** Contact ***/
 
-/* Only on mobile screens (up to 767.98px) */
 @media (max-width: 767.98px) {
   #contact .col-md-6,
   #contact .col-lg-3 {
-    text-align: center; /* Center all columns */
+    text-align: center;
   }
 
   #contact .section-title {
-    justify-content: center; /* Center the underline spans if you have them styled with flex */
+    justify-content: center;
   }
+}
+
+/*** Overlay ***/
+
+/* Overlay */
+.portfolio-overlay-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 35, 102, 0.95);
+  color: #fff;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 50px 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.portfolio-overlay-page.show {
+  opacity: 1;
+  transform: translateY(0);
+  display: flex;
+}
+
+.overlay-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portfolio-overlay-page .close-overlay {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 40px;
+  cursor: pointer;
+  color: #ff0000;
+  transition: color 0.3s ease;
+}
+.portfolio-overlay-page .close-overlay:hover {
+  color: #fff;
+}
+
+.main-image-container {
+  max-height: 70vh;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+.main-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.overlay-thumbnails {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.overlay-thumbnails img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.overlay-thumbnails img:hover {
+  transform: scale(1.05);
+  border-color: #ff0000;
+}
+
+#overlayTitle {
+  font-size: 32px;
+  font-style: italic;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#overlayCategory {
+  font-size: 18px;
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+#overlayDescription {
+  font-size: 16px;
+  max-width: 900px;
+  margin: 10px auto 20px auto;
 }

@@ -254,3 +254,70 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Overlay
+// Portfolio Overlay Logic
+const overlay = document.getElementById("portfolioOverlay");
+const overlayMainImage = document.getElementById("overlayMainImage");
+const overlayTitle = document.getElementById("overlayTitle");
+const overlayCategory = document.getElementById("overlayCategory");
+const overlayDescription = document.getElementById("overlayDescription");
+const overlayThumbnails = document.getElementById("overlayThumbnails");
+
+const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+portfolioItems.forEach((item) => {
+  // Target both link and eye buttons
+  const overlayBtns = item.querySelectorAll("a.btn-outline-light");
+  overlayBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const mainImageSrc = item.querySelector("img").src;
+      const category = item.querySelector("p").textContent;
+      const title = item.querySelector("h5").textContent;
+      const description =
+        item.getAttribute("data-description") ||
+        "Project description goes here.";
+
+      overlayMainImage.src = mainImageSrc;
+      overlayTitle.textContent = title;
+      overlayCategory.textContent = category;
+      overlayDescription.textContent = description;
+
+      // Thumbnails
+      overlayThumbnails.innerHTML = "";
+      const images = item.getAttribute("data-images");
+      if (images) {
+        images.split(",").forEach((imgSrc) => {
+          const thumb = document.createElement("img");
+          thumb.src = imgSrc;
+          thumb.addEventListener(
+            "click",
+            () => (overlayMainImage.src = imgSrc)
+          );
+          overlayThumbnails.appendChild(thumb);
+        });
+      }
+
+      overlay.style.display = "flex";
+      setTimeout(() => overlay.classList.add("show"), 10);
+    });
+  });
+});
+
+// Close overlay
+document
+  .querySelector(".portfolio-overlay-page .close-overlay")
+  .addEventListener("click", () => {
+    overlay.classList.remove("show");
+    setTimeout(() => (overlay.style.display = "none"), 400);
+  });
+
+// Click outside overlay content to close
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) {
+    overlay.classList.remove("show");
+    setTimeout(() => (overlay.style.display = "none"), 400);
+  }
+});
