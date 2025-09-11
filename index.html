@@ -1,882 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Playmaker Group</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="keywords" />
-    <meta content="" name="description" />
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playmaker Group - Social Media Mastery</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
       rel="stylesheet"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-
   <body>
-    <div class="container-xxl bg-white p-0">
-      <!-- Spinner Start -->
-      <div
-        id="spinner"
-        class="show bg-primary position-fixed top-0 start-0 w-100 vh-100 d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <div
-          class="spinner-grow text-primary"
-          style="width: 3rem; height: 3rem"
-          role="status"
-        >
-          <span class="visually-hidden">Loading...</span>
+    <!-- Loader -->
+    <div id="loader">
+      <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+      </div>
+      <div class="loader-content">
+        <div class="loader-logo"><img src="assets/img/logo-white.png" /></div>
+        <div class="loader-bar">
+          <div class="loader-progress"></div>
+        </div>
+        <div class="loader-percentage">0%</div>
+        <div class="loader-dots">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
         </div>
       </div>
-      <!-- Spinner End -->
-
-      <!-- Navbar & Hero Start -->
-      <div id="home" class="container-xxl position-relative p-0">
-        <nav
-          class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
-        >
-          <a href="" class="navbar-brand p-0">
-            <!-- <h1 class="m-0" id="playItallic">Playmaker Group</h1> -->
-            <img
-              src="img/logo-white.png"
-              alt="Logo"
-              class="logo logo-desktop normal-logo"
-            />
-
-            <img
-              src="img/logo-blue.png"
-              alt="Logo Shrink"
-              class="logo logo-desktop shrink-logo"
-            />
-
-            <img
-              src="img/logo-blue.png"
-              alt="Mobile Logo"
-              class="logo logo-mobile"
-            />
-          </a>
-          <button
-            class="navbar-toggler collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-              <a href="#home" class="nav-item nav-link active">Home</a>
-              <a href="#about" class="nav-item nav-link">About</a>
-              <a href="#services" class="nav-item nav-link">Services</a>
-              <a href="#projects" class="nav-item nav-link">Projects</a>
-              <!-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>-->
-              <a href="#contact" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block"
-              >Get Started</a
-            >
-          </div>
-        </nav>
-
-        <div class="container-xxl bg-primary hero-header">
-          <div class="container px-lg-5">
-            <div class="row g-5 align-items-end">
-              <div class="col-lg-6 text-center text-lg-start">
-                <h1 class="text-white mb-4 animated slideInDown">
-                  Controling the <span id="flowItallic">flow</span> for elite
-                  athletes.
-                </h1>
-
-                <div class="mobile-box animated fadeInUp">
-                  <p class="text-white pb-2 animated FadeIn">
-                    Playmaker Group transforms your brand’s online profile with
-                    visually stunning graphics, engaging video content, and
-                    strategic social media planning.
-                  </p>
-                  <a
-                    href="#services"
-                    class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3"
-                    >Read More</a
-                  >
-                  <a
-                    href="#contact"
-                    class="btn btn-light py-sm-3 px-sm-5 rounded-pill"
-                    >Contact Us</a
-                  >
-                </div>
-              </div>
-              <div class="col-lg-6 text-center text-lg-start">
-                <img
-                  class="img-fluid animated slideInUp"
-                  src="img/striker.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Navbar & Hero End -->
-
-      <!-- Feature Start -->
-      <div class="container-xxl py-5">
-        <div class="container py-1 px-lg-5">
-          <div class="row g-4">
-            <div class="col-lg-4 wow fadeInDown" data-wow-delay="0.1s">
-              <div class="feature-item bg-light rounded text-center p-4">
-                <i class="fa fa-3x fa-paint-brush text-primary mb-4"></i>
-                <h5 class="mb-3">Graphic Design</h5>
-                <p class="m-0">
-                  Creating stunning visuals for social media posts, banners, and
-                  branding to make your profile stand out.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4 wow fadeInDown" data-wow-delay="0.3s">
-              <div class="feature-item bg-light rounded text-center p-4">
-                <i class="fa fa-3x fa-video text-primary mb-4"></i>
-                <h5 class="mb-3">Video Editing</h5>
-                <p class="m-0">
-                  Professional video editing for reels, stories, and ads that
-                  engage your audience and boost interaction.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4 wow fadeInDown" data-wow-delay="0.5s">
-              <div class="feature-item bg-light rounded text-center p-4">
-                <i class="fa fa-3x fa-bolt text-primary mb-4"></i>
-                <h5 class="mb-3">Content Strategy</h5>
-                <p class="m-0">
-                  Planning and optimizing social media content to grow your
-                  audience and increase engagement effectively.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Feature End -->
-
-      <!-- About Start -->
-      <div id="about" class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-          <div class="row g-5 align-items-center">
-            <!-- About Text -->
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-              <p class="section-title text-secondary">About Us<span></span></p>
-              <h1 class="mb-5">Bringing Creativity to Your Social Media</h1>
-              <p class="mb-4">
-                Founded in Spring 2025, Playmaker Group is a social media agency
-                focused on transforming client profiles with stunning graphics
-                and engaging videos. We combine creativity and entertainment to
-                make your social media stand out.
-              </p>
-              <p class="mb-4">
-                Our mission is to deliver high-quality graphic designs and video
-                content that captivates your audience, builds your brand, and
-                elevates your online presence.
-              </p>
-              <a
-                href="#contact"
-                class="btn btn-primary py-sm-3 px-sm-5 rounded-pill mt-3"
-                >Get in Touch</a
-              >
-            </div>
-
-            <!-- About Image -->
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-              <img
-                class="img-fluid"
-                src="img/phone.png"
-                alt="Playmaker Group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- About End -->
-
-      <!-- Image Marquee Start -->
-      <div class="image-marquee py-5">
-        <div class="marquee-track">
-          <img src="img/logo-white.png" alt="Image 1" />
-          <img src="img/logo-white.png" alt="Image 2" />
-          <img src="img/logo-white.png" alt="Image 3" />
-          <img src="img/logo-white.png" alt="Image 4" />
-          <img src="img/logo-white.png" alt="Image 5" />
-          <img src="img/logo-white.png" alt="Image 1" />
-          <img src="img/logo-white.png" alt="Image 2" />
-          <img src="img/logo-white.png" alt="Image 3" />
-          <img src="img/logo-white.png" alt="Image 4" />
-          <img src="img/logo-white.png" alt="Image 5" />
-        </div>
-      </div>
-      <!-- Image Marquee End -->
-
-      <!-- Service Start -->
-      <div id="services" class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-          <div class="wow fadeInUp" data-wow-delay="0.1s">
-            <p class="section-title text-secondary justify-content-center">
-              <span></span>Our Services<span></span>
-            </p>
-            <h1 class="text-center mb-5">
-              Creative Solutions for Your Social Media
-            </h1>
-          </div>
-          <div class="row g-4">
-            <!-- Graphic Design -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fa fa-paint-brush fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Graphic Design</h5>
-                <p class="m-0">
-                  Creating stunning visuals for social media posts, banners, and
-                  branding to make your profile stand out.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-
-            <!-- Video Editing -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fa fa-video fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Video Editing</h5>
-                <p class="m-0">
-                  Professional video editing for reels, stories, and ads that
-                  engage your audience and boost interaction.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-
-            <!-- Content Strategy -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fa fa-bolt fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Content Strategy</h5>
-                <p class="m-0">
-                  Planning and optimizing social media content to grow your
-                  audience and increase engagement effectively.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-
-            <!-- Social Media Management -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fab fa-instagram fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Social Media Management</h5>
-                <p class="m-0">
-                  Managing social media profiles to maintain engagement, grow
-                  followers, and maintain a consistent brand voice.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-
-            <!-- Brand Consulting -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fa fa-lightbulb fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Brand Consulting</h5>
-                <p class="m-0">
-                  Providing insights and strategies to strengthen your brand
-                  identity and improve social media performance.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-
-            <!-- Reels & Stories Production -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="service-item d-flex flex-column text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                  <i class="fa fa-film fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Reels & Stories Production</h5>
-                <p class="m-0">
-                  High-quality short videos optimized for engagement and
-                  shareability across all social media platforms.
-                </p>
-                <a class="btn btn-square" href="#"
-                  ><i class="fa fa-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Service End -->
-
-      <!-- Facts Start -->
-      <div
-        class="container-xxl bg-primary fact py-5 wow fadeInUp"
-        data-wow-delay="0.1s"
-      >
-        <div class="container py-5 px-lg-5">
-          <div class="row g-4">
-            <!-- Years of Experience -->
-            <div
-              class="col-md-6 col-lg-3 text-center wow fadeIn"
-              data-wow-delay="0.1s"
-            >
-              <i class="fa fa-clock fa-3x text-secondary mb-3"></i>
-              <h1 class="text-white mb-2" data-toggle="counter-up">1</h1>
-              <p class="text-white mb-0">Year in Business</p>
-            </div>
-
-            <!-- Social Media Accounts Managed -->
-            <div
-              class="col-md-6 col-lg-3 text-center wow fadeIn"
-              data-wow-delay="0.3s"
-            >
-              <i class="fa fa-users-cog fa-3x text-secondary mb-3"></i>
-              <h1 class="text-white mb-2" data-toggle="counter-up">50</h1>
-              <p class="text-white mb-0">Social Media Accounts</p>
-            </div>
-
-            <!-- Videos & Graphics Produced -->
-            <div
-              class="col-md-6 col-lg-3 text-center wow fadeIn"
-              data-wow-delay="0.5s"
-            >
-              <i class="fa fa-video fa-3x text-secondary mb-3"></i>
-              <h1 class="text-white mb-2" data-toggle="counter-up">300</h1>
-              <p class="text-white mb-0">Graphics & Videos</p>
-            </div>
-
-            <!-- Satisfied Clients -->
-            <div
-              class="col-md-6 col-lg-3 text-center wow fadeIn"
-              data-wow-delay="0.7s"
-            >
-              <i class="fa fa-thumbs-up fa-3x text-secondary mb-3"></i>
-              <h1 class="text-white mb-2" data-toggle="counter-up">100</h1>
-              <p class="text-white mb-0">Satisfied Clients</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Facts End -->
-
-      <!-- Projects Start -->
-      <div id="projects" class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-          <div class="wow fadeInUp" data-wow-delay="0.1s">
-            <p class="section-title text-secondary justify-content-center">
-              <span></span>Our Projects<span></span>
-            </p>
-            <h1 class="text-center mb-5">Recent Client Work</h1>
-          </div>
-
-          <!-- Portfolio Filters -->
-          <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="col-12 text-center">
-              <ul class="list-inline mb-5" id="portfolio-flters">
-                <li class="mx-2 active" data-filter="*">All</li>
-                <li class="mx-2" data-filter=".web">Video Highlights</li>
-                <li class="mx-2" data-filter=".design">Graphic Design</li>
-                <li class="mx-2" data-filter=".marketing">Feed</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Portfolio Items -->
-          <div class="row g-4 portfolio-container">
-            <!-- Portfolio Item 1 -->
-            <div
-              class="col-lg-4 col-md-6 portfolio-item web wow fadeInUp"
-              data-wow-delay="0.1s"
-              data-title="Content Creation"
-              data-category="Video Highlights"
-              data-description="We created professional video highlight reels tailored for social media and client promotion."
-              data-main="img/portfolio-1.png"
-              data-images="img/portfolio-1.png,img/portfolio-1.png,img/portfolio-1.png"
-            >
-              <div class="rounded overflow-hidden">
-                <div class="position-relative overflow-hidden">
-                  <img
-                    class="img-fluid w-100"
-                    src="img/portfolio-1.png"
-                    alt="Content Creation"
-                  />
-                  <div class="portfolio-overlay">
-                    <a
-                      class="btn btn-square btn-outline-light mx-1 open-overlay"
-                      href="#"
-                      ><i class="fa fa-eye"></i
-                    ></a>
-                    <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="https://www.behance.net/gallery/228901797/Highlihts-Videos"
-                      target="_blank"
-                      ><i class="fa fa-link"></i
-                    ></a>
-                  </div>
-                </div>
-                <div class="bg-light p-4">
-                  <p class="text-primary fw-medium mb-2">Video Highlights</p>
-                  <h5 class="lh-base mb-0">Content Creation</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Portfolio Item 2 -->
-            <div
-              class="col-lg-4 col-md-6 portfolio-item design wow fadeInUp"
-              data-wow-delay="0.2s"
-              data-title="Brand Identity"
-              data-category="Graphic Design"
-              data-description="Full brand identity design including logos, color palette, and typography for consistent branding."
-              data-main="img/portfolio-2.png"
-              data-images="img/portfolio-2.png,img/portfolio-2.png,img/portfolio-2.png"
-            >
-              <div class="rounded overflow-hidden">
-                <div class="position-relative overflow-hidden">
-                  <img
-                    class="img-fluid w-100"
-                    src="img/portfolio-2.png"
-                    alt="Brand Identity"
-                  />
-                  <div class="portfolio-overlay">
-                    <a
-                      class="btn btn-square btn-outline-light mx-1 open-overlay"
-                      href="#"
-                      ><i class="fa fa-eye"></i
-                    ></a>
-                    <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="#"
-                      target="_blank"
-                      ><i class="fa fa-link"></i
-                    ></a>
-                  </div>
-                </div>
-                <div class="bg-light p-4">
-                  <p class="text-primary fw-medium mb-2">Graphic Design</p>
-                  <h5 class="lh-base mb-0">Brand Identity</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Portfolio Item 3 -->
-            <div
-              class="col-lg-4 col-md-6 portfolio-item marketing wow fadeInUp"
-              data-wow-delay="0.3s"
-              data-title="Ad Campaign"
-              data-category="Digital Marketing"
-              data-description="Targeted ad campaign that increased client engagement and boosted conversions significantly."
-              data-main="img/portfolio-3.png"
-              data-images="img/portfolio-3.png,img/portfolio-3.png,img/portfolio-3.png"
-            >
-              <div class="rounded overflow-hidden">
-                <div class="position-relative overflow-hidden">
-                  <img
-                    class="img-fluid w-100"
-                    src="img/portfolio-3.png"
-                    alt="Ad Campaign"
-                  />
-                  <div class="portfolio-overlay">
-                    <a
-                      class="btn btn-square btn-outline-light mx-1 open-overlay"
-                      href="#"
-                      ><i class="fa fa-eye"></i
-                    ></a>
-                    <a
-                      class="btn btn-square btn-outline-light mx-1"
-                      href="#"
-                      target="_blank"
-                      ><i class="fa fa-link"></i
-                    ></a>
-                  </div>
-                </div>
-                <div class="bg-light p-4">
-                  <p class="text-primary fw-medium mb-2">Digital Marketing</p>
-                  <h5 class="lh-base mb-0">Ad Campaign</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Projects End -->
-
-      <!-- Testimonial Start -->
-      <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 px-lg-5">
-          <p class="section-title text-secondary justify-content-center">
-            <span></span>Testimonial<span></span>
-          </p>
-          <h1 class="text-center mb-5">What Our Clients Say</h1>
-          <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-light rounded my-4">
-              <p class="fs-5">
-                <i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i
-                >Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
-                erat ipsum et lorem et sit sed stet lorem sit clita duo justo.
-              </p>
-              <div class="d-flex align-items-center">
-                <img
-                  class="img-fluid flex-shrink-0 rounded-circle"
-                  src="img/testimonial-1.jpg"
-                  style="width: 65px; height: 65px"
-                />
-                <div class="ps-4">
-                  <h5 class="mb-1">Client Name</h5>
-                  <span>Profession</span>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-item bg-light rounded my-4">
-              <p class="fs-5">
-                <i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i
-                >Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
-                erat ipsum et lorem et sit sed stet lorem sit clita duo justo.
-              </p>
-              <div class="d-flex align-items-center">
-                <img
-                  class="img-fluid flex-shrink-0 rounded-circle"
-                  src="img/testimonial-2.jpg"
-                  style="width: 65px; height: 65px"
-                />
-                <div class="ps-4">
-                  <h5 class="mb-1">Client Name</h5>
-                  <span>Profession</span>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-item bg-light rounded my-4">
-              <p class="fs-5">
-                <i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i
-                >Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
-                erat ipsum et lorem et sit sed stet lorem sit clita duo justo.
-              </p>
-              <div class="d-flex align-items-center">
-                <img
-                  class="img-fluid flex-shrink-0 rounded-circle"
-                  src="img/testimonial-3.jpg"
-                  style="width: 65px; height: 65px"
-                />
-                <div class="ps-4">
-                  <h5 class="mb-1">Client Name</h5>
-                  <span>Profession</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Testimonial End -->
-
-      <!-- Team Start -->
-      <div class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-          <div class="wow fadeInUp text-center" data-wow-delay="0.1s">
-            <p class="section-title text-secondary justify-content-center">
-              <span></span>Our Team<span></span>
-            </p>
-            <h1 class="mb-5">Our Team Members</h1>
-          </div>
-          <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="team-item bg-light rounded mx-auto">
-                <div class="text-center border-bottom p-4">
-                  <img
-                    class="img-fluid rounded-circle mb-4"
-                    src="img/team-1.jpg"
-                    alt=""
-                  />
-                  <h5>Lazar Stojanović</h5>
-                  <span>CEO & Founder</span>
-                </div>
-                <div class="d-flex justify-content-center p-4">
-                  <a class="btn btn-square mx-1" href="" target="_blank"
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                  <a
-                    class="btn btn-square mx-1"
-                    href="https://www.instagram.com/lakisssa/"
-                    target="_blank"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                  <a
-                    class="btn btn-square mx-1"
-                    href="https://l.instagram.com/?u=https%3A%2F%2Fwww.behance.net%2Fplaymakergroup%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAad5rVxrkEK6rIPnMravvkYY1inysBqc5sv7VFCrsE7PAYulh85hMiYLSXcBYw_aem_P6zeNBVEdnvhJoS0SRlF4Q&e=AT1dJZ-86V9AM3k2f06_Rh35ehZF-vKjA4drpauZkI3r4lBlGiPFpwRG4Ue5vxbjJH2HAmo7e34gvx_VreP2CjNz4gL-CugjAwuq28Q"
-                    target="_blank"
-                    ><i class="fab fa-behance"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item bg-light rounded">
-                            <div class="text-center border-bottom p-4">
-                                <img class="img-fluid rounded-circle mb-4" src="img/team-2.jpg" alt="">
-                                <h5>Jessica Brown</h5>
-                                <span>Web Designer</span>
-                            </div>
-                            <div class="d-flex justify-content-center p-4">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item bg-light rounded">
-                            <div class="text-center border-bottom p-4">
-                                <img class="img-fluid rounded-circle mb-4" src="img/team-3.jpg" alt="">
-                                <h5>Tony Johnson</h5>
-                                <span>SEO Expert</span>
-                            </div>
-                            <div class="d-flex justify-content-center p-4">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-      <!-- Team End -->
-
-      <!-- Footer Start -->
-      <div
-        id="contact"
-        class="container-fluid bg-primary text-light footer wow fadeIn"
-        data-wow-delay="0.1s"
-      >
-        <div class="container py-5 px-lg-5 text-center text-lg-start">
-          <div class="row g-5 justify-content-center">
-            <!-- Contact (Left) -->
-            <div class="col-md-6 col-lg-3">
-              <p class="section-title text-white h5 mb-4">
-                Contact<span></span>
-              </p>
-              <p class="mb-2">
-                <i class="fas fa-envelope me-2"></i> playmakergroup0@gmail.com
-              </p>
-              <p class="mb-2">
-                <i class="fas fa-phone me-2"></i> +381 65 5644856
-              </p>
-            </div>
-
-            <!-- Gallery (Right) -->
-            <div class="col-md-6 col-lg-3">
-              <p class="section-title text-white h5 mb-4">
-                Gallery<span></span>
-              </p>
-              <div class="row g-2 justify-content-center">
-                <div class="col-4">
-                  <img
-                    class="img-fluid gallery-img"
-                    src="img/gallery-1.png"
-                    alt="Image"
-                  />
-                </div>
-                <div class="col-4">
-                  <img
-                    class="img-fluid gallery-img"
-                    src="img/gallery-2.png"
-                    alt="Image"
-                  />
-                </div>
-                <div class="col-4">
-                  <img
-                    class="img-fluid gallery-img"
-                    src="img/gallery-3.png"
-                    alt="Image"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social Media Centered Below -->
-          <div class="d-flex justify-content-center pt-4">
-            <a
-              class="btn btn-outline-light btn-social mx-1"
-              href="https://www.instagram.com/playmaker.group/"
-              target="_blank"
-            >
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a
-              class="btn btn-outline-light btn-social mx-1"
-              href="https://www.youtube.com/@playmakergrp"
-              target="_blank"
-            >
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a
-              class="btn btn-outline-light btn-social mx-1"
-              href="https://www.behance.net/playmakergroup"
-              target="_blank"
-            >
-              <i class="fab fa-behance"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="container px-lg-5">
-          <div class="copyright py-3 text-center">
-            &copy; <a class="text-light" href="#">Playmaker Group</a>, All
-            Rights Reserved. <br />
-            Developed by <a class="shine-text" href="#">Jevta</a>
-          </div>
-        </div>
-      </div>
-      <!-- Footer End -->
-
-      <!-- Full Image Modal with Arrows -->
-      <div
-        class="modal fade"
-        id="galleryModal"
-        tabindex="-1"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content bg-transparent border-0 position-relative">
-            <div class="modal-body p-0">
-              <img
-                id="modalImage"
-                src=""
-                class="img-fluid w-100"
-                alt="Full Image"
-              />
-
-              <!-- Navigation Arrows -->
-              <button
-                type="button"
-                class="btn btn-light position-absolute top-50 start-0 translate-middle-y"
-                id="prevImage"
-                style="opacity: 0.7"
-              >
-                <i class="fas fa-arrow-left"></i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-light position-absolute top-50 end-0 translate-middle-y"
-                id="nextImage"
-                style="opacity: 0.7"
-              >
-                <i class="fas fa-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portfolio Overlay -->
-      <div class="portfolio-overlay-page" id="portfolioOverlay">
-        <span class="close-overlay"></span>
-        <div class="overlay-content">
-          <div class="main-image-container">
-            <img id="overlayMainImage" src="" alt="" />
-          </div>
-          <div id="overlayTitle"></div>
-          <div id="overlayCategory"></div>
-          <div id="overlayDescription"></div>
-          <div class="overlay-thumbnails" id="overlayThumbnails">
-            <!-- Thumbnails injected dynamically -->
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
-							
-							/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support.
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                        </div> -->
-
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-        ><i class="bi bi-arrow-up"></i
-      ></a>
     </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home">
+          <img src="assets/img/logo-white.png" alt="Playmaker Group Logo" />
+        </a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8 hero-content">
+            <h1 class="hero-title fade-in">
+              Transform Your <br />
+              <span class="gradient-text">Digital Game</span>, <br />
+              Dominate <br />
+              <span class="gradient-text"> Social Media </span>
+            </h1>
+            <p class="hero-subtitle">
+              We turn football talent into digital stardom. <br />
+              From content creation to brand partnerships, we're your strategic
+              partner in building an unstoppable online presence.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#portfolio" class="btn-primary-custom">View Our Work</a>
+              <a href="#contact" class="btn-secondary-custom"
+                >Start Your Journey</a
+              >
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">500M+</span>
+                <span class="stat-label">Total Reach</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Players Managed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">Growth Rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="fade-in">
+          <span class="section-badge">WHO WE ARE</span>
+          <h2 class="section-title">
+            Where <span class="highlight-text">Athletic Excellence</span><br />
+            Meets Digital Mastery
+          </h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="fade-in">
+            <p class="about-text">
+              At Playmaker Group, we understand that today's football stars need
+              more than just skill on the pitch. They need a powerful digital
+              presence that tells their story, engages fans, and opens doors to
+              endless opportunities.
+            </p>
+
+            <ul class="about-features">
+              <li>Strategic content planning tailored to your career goals</li>
+              <li>Professional video production and photography</li>
+              <li>Brand partnership negotiations and management</li>
+              <li>24/7 community management and fan engagement</li>
+              <li>Data-driven growth strategies across all platforms</li>
+            </ul>
+
+            <a href="#contact" class="btn-primary-custom">Partner With Us</a>
+          </div>
+
+          <div class="about-visual fade-in">
+            <div class="visual-card"></div>
+            <div class="visual-card"></div>
+            <div class="visual-card"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-badge">WHAT WE DO</span>
+          <h2 class="section-title">
+            Complete <span class="highlight-text">Digital Ecosystem</span><br />
+            For Modern Athletes
+          </h2>
+          <p class="hero-subtitle">
+            From viral content creation to strategic brand partnerships, we
+            handle every aspect of your digital presence
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-calendar"></i>
+            </div>
+            <h3 class="service-title">Matchday Coverage</h3>
+            <p class="service-description">
+              Live graphics, instant updates, and cinematic highlights with
+              behind-the-scenes insights that bring every match to life.
+            </p>
+          </div>
+
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-camera-reels"></i>
+            </div>
+            <h3 class="service-title">Highlight Reels</h3>
+            <p class="service-description">
+              Dynamic edits that showcase key plays, team strategy, and the
+              intensity of the match, with exclusive footage that immerses
+              viewers in the action.
+            </p>
+          </div>
+
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-binoculars"></i>
+            </div>
+            <h3 class="service-title">Scouting Features</h3>
+            <p class="service-description">
+              Detailed footage and analysis highlighting player skills,
+              potential, and performance, giving a clear view of talent in every
+              game.
+            </p>
+          </div>
+
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-share"></i>
+            </div>
+            <h3 class="service-title">Social Media Management</h3>
+            <p class="service-description">
+              Engaging content creation and strategic posting that grows your
+              audience, boosts interaction, and showcases your brand
+              effectively.
+            </p>
+          </div>
+
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-bar-chart"></i>
+            </div>
+            <h3 class="service-title">Analytics & Insights</h3>
+            <p class="service-description">
+              Comprehensive performance tracking and strategic insights to
+              optimize your digital strategy and ROI.
+            </p>
+          </div>
+
+          <div class="service-card fade-in">
+            <div class="service-icon">
+              <i class="bi bi-code"></i>
+            </div>
+            <h3 class="service-title">Website Development</h3>
+            <p class="service-description">
+              Custom websites designed for seamless user experience, responsive
+              layouts, and visually compelling design that strengthens your
+              brand online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-badge">SUCCESS STORIES</span>
+          <h2 class="section-title">
+            <span class="highlight-text">Proven Results</span><br />
+            That Speak Volumes
+          </h2>
+          <p class="hero-subtitle">
+            See how we've transformed careers and built digital empires for
+            football's rising stars
+          </p>
+        </div>
+
+        <div class="portfolio-tabs fade-in">
+          <button class="tab-btn active" data-tab="all">All Projects</button>
+          <button class="tab-btn" data-tab="content">Content Creation</button>
+          <button class="tab-btn" data-tab="campaigns">Campaigns</button>
+          <button class="tab-btn" data-tab="branding">Personal Branding</button>
+        </div>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-item fade-in" data-category="content">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Rising Star Campaign</h3>
+              <p class="portfolio-category">Content Creation</p>
+              <p class="portfolio-description">
+                Complete social media transformation for an academy player,
+                resulting in 300% follower growth and scout attention.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="campaigns">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Brand Partnership Success</h3>
+              <p class="portfolio-category">Campaign Management</p>
+              <p class="portfolio-description">
+                Secured and managed a six-figure sponsorship deal with a major
+                sportswear brand for a professional player.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="branding">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Personal Brand Evolution</h3>
+              <p class="portfolio-category">Personal Branding</p>
+              <p class="portfolio-description">
+                Complete brand overhaul for a transfer market player, leading to
+                increased visibility and career opportunities.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="content">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Viral Video Series</h3>
+              <p class="portfolio-category">Content Creation</p>
+              <p class="portfolio-description">
+                Created a viral training series that garnered 50M+ views and
+                established the player as a social media influencer.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="campaigns">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Championship Coverage</h3>
+              <p class="portfolio-category">Campaign Management</p>
+              <p class="portfolio-description">
+                Comprehensive tournament coverage that increased engagement by
+                400% and attracted international media attention.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="branding">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Legacy Building</h3>
+              <p class="portfolio-category">Personal Branding</p>
+              <p class="portfolio-description">
+                Developed a comprehensive digital legacy strategy for a retiring
+                legend, ensuring lasting impact beyond playing career.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="branding">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Legacy Building</h3>
+              <p class="portfolio-category">Personal Branding</p>
+              <p class="portfolio-description">
+                Developed a comprehensive digital legacy strategy for a retiring
+                legend, ensuring lasting impact beyond playing career.
+              </p>
+            </div>
+          </div>
+
+          <div class="portfolio-item fade-in" data-category="branding">
+            <div class="portfolio-image"></div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Legacy Building</h3>
+              <p class="portfolio-category">Personal Branding</p>
+              <p class="portfolio-description">
+                Developed a comprehensive digital legacy strategy for a retiring
+                legend, ensuring lasting impact beyond playing career.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-badge">OUR TEAM</span>
+          <h2 class="section-title">
+            <span class="highlight-text">Expert Strategist</span><br />
+            Behind Your Success
+          </h2>
+          <p class="hero-subtitle">
+            Visionary leader and creative strategist behind the company, driving
+            innovation and shaping the brand’s mission with passion and
+            dedication.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card fade-in">
+            <div class="team-avatar">
+              <img src="assets/img/ceo.jpg" />
+            </div>
+            <h3 class="team-name">Lazar Stojanović</h3>
+            <p class="team-role">Founder</p>
+            <!--  <p class="team-description">
+              Former Premier League midfielder turned digital strategist. 10+
+              years experience in athlete marketing and brand development.
+            </p>-->
+            <div class="team-social">
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+              <a href="#"><i class="bi bi-behance"></i></a>
+            </div>
+          </div>
+
+          <!-- <div class="team-card fade-in">
+            <div class="team-avatar"></div>
+            <h3 class="team-name">Sofia Rodriguez</h3>
+            <p class="team-role">Creative Director</p>
+            <p class="team-description">
+              Award-winning content creator specializing in sports media. Led
+              viral campaigns for top-tier athletes across multiple platforms.
+            </p>
+            <div class="team-social">
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-behance"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar"></div>
+            <h3 class="team-name">James Thompson</h3>
+            <p class="team-role">Growth Specialist</p>
+            <p class="team-description">
+              Data scientist turned social media growth expert. Developed
+              proprietary algorithms that consistently deliver exponential
+              growth.
+            </p>
+            <div class="team-social">
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar"></div>
+            <h3 class="team-name">Emma Chen</h3>
+            <p class="team-role">Partnership Manager</p>
+            <p class="team-description">
+              Former sports agent with extensive brand partnership experience.
+              Negotiated deals worth millions for athlete clients worldwide.
+            </p>
+            <div class="team-social">
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-badge">CLIENT FEEDBACK</span>
+          <h2 class="section-title">
+            <span class="highlight-text">Success Stories</span><br />
+            From Our Clients
+          </h2>
+          <p class="hero-subtitle">
+            Hear directly from the athletes and brands who have transformed
+            their digital presence with our expertise
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              "Working with Playmaker Group transformed my social media presence
+              completely. Their strategic approach helped me grow my following
+              by 400% in just six months, leading to major brand partnerships I
+              never thought possible."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h4 class="testimonial-name">Alex Thompson</h4>
+                <p class="testimonial-position">Premier League Midfielder</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              "The content strategy Playmaker developed for me has been
+              game-changing. Their team understands the unique challenges
+              athletes face and creates authentic content that resonates with
+              fans while building my personal brand."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h4 class="testimonial-name">Sarah Martinez</h4>
+                <p class="testimonial-position">International Forward</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              "As a young player looking to establish myself, Playmaker Group
+              gave me the digital foundation I needed. Their guidance helped me
+              showcase not just my skills on the pitch, but my personality and
+              values off it."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h4 class="testimonial-name">Jordan Wilson</h4>
+                <p class="testimonial-position">Rising Academy Star</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-badge">GET IN TOUCH</span>
+          <h2 class="section-title">
+            Ready to <span class="highlight-text">Level Up</span><br />
+            Your Digital Game?
+          </h2>
+          <p class="hero-subtitle">
+            Let's discuss your goals and create a winning strategy that
+            transforms your potential into digital dominance
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info fade-in">
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <h4>Email Us</h4>
+              <p>hello@playmakergroup.com</p>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <h4>Call Us</h4>
+              <p>+1 (555) 123-4567</p>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <h4>Visit Us</h4>
+              <p>123 Sports District<br />London, UK</p>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="bi bi-clock"></i>
+              </div>
+              <h4>Working Hours</h4>
+              <p>Mon - Fri: 9AM - 7PM<br />Weekend: On-call</p>
+            </div>
+          </div>
+
+          <div class="contact-form fade-in">
+            <form>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  class="form-control-custom"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  class="form-control-custom"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Current Status</label>
+                <select class="form-control-custom" required>
+                  <option value="">Select your current status</option>
+                  <option value="academy">Academy Player</option>
+                  <option value="semi-pro">Semi-Professional</option>
+                  <option value="professional">Professional Player</option>
+                  <option value="agent">Agent/Manager</option>
+                  <option value="club">Club Representative</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Project Details</label>
+                <textarea
+                  class="form-control-custom"
+                  rows="5"
+                  placeholder="Tell us about your goals and what you'd like to achieve..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary-custom w-100">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div>
+            <div class="footer-brand">Playmaker Group</div>
+            <p class="footer-description">
+              Transforming football talent into digital stardom through
+              strategic social media management, content creation, and brand
+              partnerships.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#services">Content Creation</a></li>
+              <li><a href="#services">Growth Strategy</a></li>
+              <li><a href="#services">Brand Partnerships</a></li>
+              <li><a href="#services">Community Management</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#team">Our Team</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Playmaker Group. <br />
+            All rights reserved.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-behance"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
