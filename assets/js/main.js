@@ -275,37 +275,46 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// ===== BACK TO TOP BUTTON (FIXED) =====
+/// ===== OPTIMIZED BACK TO TOP BUTTON =====
 const backToTopButton = document.getElementById("backToTop");
+let isScrolling = false;
 
-// Show/hide button based on scroll position
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
+// Optimized scroll handler with throttling
+function handleScroll() {
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+      isScrolling = false;
+    });
+    isScrolling = true;
   }
-});
+}
 
-// Handle back to top click with smooth scroll
+// Use passive event listener for better performance
+window.addEventListener("scroll", handleScroll, { passive: true });
+
+// Optimized smooth scroll with faster animation
 if (backToTopButton) {
   backToTopButton.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("Back to top clicked");
-
-    // Use the same smooth scroll function
+    // Faster animation - reduced from 1000ms to 600ms
     const startPosition = window.pageYOffset;
     const distance = -startPosition;
     let startTime = null;
+    const duration = 600; // Reduced duration
 
     function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, distance, 1000);
+      const run = ease(timeElapsed, startPosition, distance, duration);
       window.scrollTo(0, run);
-      if (timeElapsed < 1000) requestAnimationFrame(animation);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
     }
 
     function ease(t, b, c, d) {
