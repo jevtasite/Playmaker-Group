@@ -657,7 +657,6 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 }
 
 /* ===== PLATFORM STATS STYLES ===== */
@@ -1887,10 +1886,6 @@ html {
 
   .section-text {
     font-size: 1rem;
-  }
-
-  .about-visual {
-    margin-top: 1.5rem;
   }
 
   .visual-card {
