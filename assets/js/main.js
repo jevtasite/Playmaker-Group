@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Simple smooth scroll function
   function smoothScrollTo(target, duration = 800) {
-    const targetPosition = target.offsetTop - 0;
+    const targetPosition = target.offsetTop - 25;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
