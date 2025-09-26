@@ -145,13 +145,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ===== WORKING SMOOTH SCROLL - DIRECT IMPLEMENTATION =====
+// ===== OPTIMIZED SMOOTH SCROLL =====
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Initializing smooth scroll...");
 
-  // Simple smooth scroll function
-  function smoothScrollTo(target, duration = 800) {
-    const targetPosition = target.offsetTop - 25;
+  // Simplified smooth scroll function for better mobile performance
+  function smoothScrollTo(target, duration = 600) {
+    // Reduced from 800ms
+    const targetPosition = target.offsetTop - 65;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
@@ -159,63 +160,60 @@ document.addEventListener("DOMContentLoaded", function () {
     function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
+      // Simplified easing function for better performance
+      const progress = Math.min(timeElapsed / duration, 1);
+      const easeProgress = progress * (2 - progress); // Simple ease-out
 
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
+      window.scrollTo(0, startPosition + distance * easeProgress);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
     }
 
     requestAnimationFrame(animation);
   }
 
-  // Wait a bit for page to fully load
-  setTimeout(() => {
-    // Get ALL links with href starting with #
-    const allLinks = document.querySelectorAll("a");
+  // Immediate setup without delay
+  const allLinks = document.querySelectorAll("a[href^='#']");
 
-    allLinks.forEach((link) => {
-      const href = link.getAttribute("href");
+  allLinks.forEach((link) => {
+    const href = link.getAttribute("href");
 
-      if (href && href.startsWith("#") && href !== "#") {
-        console.log("Adding listener to:", href);
+    if (href && href !== "#") {
+      console.log("Adding listener to:", href);
 
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-          console.log("Clicked:", href);
+        console.log("Clicked:", href);
 
-          if (href === "#home") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            return;
-          }
+        if (href === "#home") {
+          // Faster scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
 
-          const target = document.querySelector(href);
-          if (target) {
-            console.log("Scrolling to:", target);
-            smoothScrollTo(target);
-          } else {
-            console.log("Target not found:", href);
-          }
+        const target = document.querySelector(href);
+        if (target) {
+          console.log("Scrolling to:", target);
+          smoothScrollTo(target, 500); // Even faster on mobile
+        }
 
-          // Close mobile menu
-          const navbarCollapse = document.querySelector(".navbar-collapse");
-          if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-            bsCollapse.hide();
-          }
-        });
-      }
-    });
+        // Close mobile menu immediately
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+        if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+        }
+      });
+    }
+  });
 
-    console.log("Smooth scroll setup complete");
-  }, 500);
+  console.log("Smooth scroll setup complete");
 });
 
 // ===== MOBILE NAVBAR ANIMATIONS =====
