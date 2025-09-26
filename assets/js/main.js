@@ -1,476 +1,385 @@
-// Playmaker Group - Main JavaScript File (Refactored)
-// =====================================
+// ===== PORTFOLIO FILTERING =====
+document.addEventListener("DOMContentLoaded", function () {
+  // Portfolio filtering functionality
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const galleryItems = document.querySelectorAll(".gallery-item");
 
-(function () {
-  "use strict";
+  // Set initial state - show matchday items first
+  showFilteredItems("matchday");
 
-  // ====== Utility functions ======
-  const utils = {
-    debounce(func, wait = 20, immediate = false) {
-      let timeout;
-      return function (...args) {
-        const context = this;
-        const later = () => {
-          timeout = null;
-          if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-      };
-    },
-    throttle(func, limit = 100) {
-      let lastFunc, lastRan;
-      return function (...args) {
-        const context = this;
-        if (!lastRan) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        } else {
-          clearTimeout(lastFunc);
-          lastFunc = setTimeout(() => {
-            if (Date.now() - lastRan >= limit) {
-              func.apply(context, args);
-              lastRan = Date.now();
-            }
-          }, limit - (Date.now() - lastRan));
-        }
-      };
-    },
-  };
+  // Set matchday button as active initially
+  filterButtons.forEach((btn) => btn.classList.remove("active"));
+  document.querySelector('[data-filter="matchday"]').classList.add("active");
 
-  // Loader JavaScript
-  const preloader = {
-    progressInterval: null,
-    progress: 0,
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.getAttribute("data-filter");
 
-    init: function () {
-      console.log("Initializing loader...");
+      // Update active button
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
 
-      const loader = document.getElementById("loader");
-      const loaderProgress = document.querySelector(".loader-progress");
+      // Show filtered items
+      showFilteredItems(filter);
+    });
+  });
 
-      if (!loader) {
-        console.error("Loader element with id 'loader' not found!");
-        return;
-      }
+  // Updated JavaScript for smoother filtering without layout jumps
+  function showFilteredItems(filter) {
+    const galleryItems = document.querySelectorAll(".gallery-item");
 
-      if (!loaderProgress) {
-        console.error("Loader progress element not found!");
-        return;
-      }
+    galleryItems.forEach((item) => {
+      const itemCategory = item.getAttribute("data-category");
 
-      console.log("Loader elements found, starting animation...");
+      if (filter === "all" || itemCategory === filter) {
+        // Item should be visible
+        item.classList.remove("fade-out", "hidden");
+        item.style.position = "relative";
+        item.style.zIndex = "1";
 
-      // Prevent body scroll during loading
-      document.body.style.overflow = "hidden";
-
-      // Reset progress bar
-      loaderProgress.style.width = "0%";
-      this.progress = 0;
-
-      // Progress animation with more frequent updates
-      this.progressInterval = setInterval(() => {
-        // Gradual slow increments
-        if (this.progress < 20) {
-          this.progress += Math.random() * 3 + 1; // 1-4
-        } else if (this.progress < 40) {
-          this.progress += Math.random() * 2 + 0.5; // 0.5-2.5
-        } else if (this.progress < 70) {
-          this.progress += Math.random() * 1.5 + 0.3; // 0.3-1.8
-        } else if (this.progress < 85) {
-          this.progress += Math.random() * 1 + 0.2; // 0.2-1.2
-        } else {
-          this.progress += Math.random() * 0.5 + 0.1; // 0.1-0.6
-        }
-
-        // Don't let it reach 100% until page is loaded
-        if (this.progress > 95) this.progress = 95;
-
-        loaderProgress.style.width = Math.floor(this.progress) + "%";
-        console.log("Progress:", Math.floor(this.progress) + "%");
-      }, 150); // Faster updates
-
-      // Hide loader when page is fully loaded
-      if (document.readyState === "complete") {
-        console.log("Page already loaded, hiding loader...");
-        setTimeout(() => this.hideLoader(loader, loaderProgress), 1000);
+        // Small delay for smooth transition
+        setTimeout(() => {
+          item.classList.add("fade-in");
+        }, 50);
       } else {
-        window.addEventListener("load", () => {
-          console.log("Page load event fired, hiding loader...");
-          this.hideLoader(loader, loaderProgress);
-        });
+        // Item should be hidden but maintain layout space initially
+        item.classList.remove("fade-in");
+        item.classList.add("fade-out");
+
+        // After fade out completes, remove from layout
+        setTimeout(() => {
+          item.style.position = "absolute";
+          item.style.zIndex = "-1";
+          item.classList.add("hidden");
+        }, 400);
       }
+    });
+  }
 
-      // Fallback - hide loader after 6 seconds
-      setTimeout(() => {
-        if (loader && loader.style.display !== "none") {
-          console.log("Fallback timeout reached, hiding loader...");
-          this.hideLoader(loader, loaderProgress);
-        }
-      }, 6000);
-    },
+  // ===== IMAGE MODAL FUNCTIONALITY =====
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("modalImage");
+  const closeBtn = document.querySelector(".modal-close");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-    hideLoader: function (loader, loaderProgress) {
-      console.log("Hiding loader...");
+  let currentImageIndex = 0;
+  let currentImages = [];
 
-      // Clear the progress interval
-      if (this.progressInterval) {
-        clearInterval(this.progressInterval);
+  // Open modal when gallery item is clicked
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      // Get currently visible items based on active filter
+      const activeFilter = document
+        .querySelector(".filter-btn.active")
+        .getAttribute("data-filter");
+      currentImages = Array.from(galleryItems).filter((item) => {
+        const itemCategory = item.getAttribute("data-category");
+        return activeFilter === "all" || itemCategory === activeFilter;
+      });
+
+      currentImageIndex = currentImages.indexOf(item);
+      openModal(item);
+    });
+  });
+
+  function openModal(item) {
+    const imgSrc = item.getAttribute("data-src");
+    const imgAlt = item.getAttribute("data-alt");
+
+    modalImage.src = imgSrc;
+    modalImage.alt = imgAlt;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    updateNavigationButtons();
+  }
+
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  function updateNavigationButtons() {
+    prevBtn.disabled = currentImageIndex === 0;
+    nextBtn.disabled = currentImageIndex === currentImages.length - 1;
+  }
+
+  function showPreviousImage() {
+    if (currentImageIndex > 0) {
+      currentImageIndex--;
+      openModal(currentImages[currentImageIndex]);
+    }
+  }
+
+  function showNextImage() {
+    if (currentImageIndex < currentImages.length - 1) {
+      currentImageIndex++;
+      openModal(currentImages[currentImageIndex]);
+    }
+  }
+
+  // Event listeners for modal
+  closeBtn.addEventListener("click", closeModal);
+  prevBtn.addEventListener("click", showPreviousImage);
+  nextBtn.addEventListener("click", showNextImage);
+
+  // Close modal when clicking outside the image
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("active")) {
+      if (e.key === "Escape") {
+        closeModal();
+      } else if (e.key === "ArrowLeft") {
+        showPreviousImage();
+      } else if (e.key === "ArrowRight") {
+        showNextImage();
       }
+    }
+  });
+});
 
-      const loaderPercentage = document.querySelector(".loader-percentage");
-      const loaderContent = document.querySelector(".loader-content");
+// ===== WORKING SMOOTH SCROLL - DIRECT IMPLEMENTATION =====
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("Initializing smooth scroll...");
 
-      // Complete the progress bar smoothly to 100%
-      let finalProgress = this.progress;
-      const completeInterval = setInterval(() => {
-        finalProgress += 4;
-        if (finalProgress >= 100) {
-          finalProgress = 100;
-          loaderProgress.style.width = finalProgress + "%";
-          if (loaderPercentage)
-            loaderPercentage.textContent = finalProgress + "%";
-          clearInterval(completeInterval);
+  // Simple smooth scroll function
+  function smoothScrollTo(target, duration = 800) {
+    const targetPosition = target.offsetTop - 0;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
 
-          console.log("Progress at 100%, starting manual fade sequence...");
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
 
-          // Wait at 100% then start manual fade with requestAnimationFrame
-          setTimeout(() => {
-            console.log("Starting smooth fade manually...");
-
-            // Manual fade using requestAnimationFrame for guaranteed smoothness
-            let opacity = 1;
-            const startTime = performance.now();
-            const duration = 800; // 800ms fade
-
-            function fadeStep(currentTime) {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-
-              // Ease-out function for smooth animation
-              const easeOut = 1 - Math.pow(1 - progress, 3);
-
-              // Calculate opacity value
-              opacity = 1 - easeOut;
-
-              // Apply fade to both content and background simultaneously
-              if (loaderContent) {
-                loaderContent.style.opacity = opacity;
-              }
-              loader.style.opacity = opacity;
-
-              if (progress < 1) {
-                requestAnimationFrame(fadeStep);
-              } else {
-                // Animation complete
-                console.log("Manual fade complete, removing loader...");
-                loader.style.display = "none";
-                document.body.style.overflow = "";
-                document.body.classList.add("loaded");
-                window.dispatchEvent(new Event("loaderHidden"));
-                console.log("Loader hidden successfully");
-              }
-            }
-
-            requestAnimationFrame(fadeStep);
-          }, 500); // Wait at 100%
-          return;
-        }
-        loaderProgress.style.width = finalProgress + "%";
-        if (loaderPercentage)
-          loaderPercentage.textContent = Math.floor(finalProgress) + "%";
-      }, 40);
-    },
-  };
-  // ====== Mobile Menu ======
-  const mobileMenu = {
-    isMenuOpen: false,
-    toggler: null,
-    collapse: null,
-
-    init() {
-      this.toggler = document.querySelector(".navbar-toggler");
-      this.collapse = document.querySelector(".navbar-collapse");
-      if (!this.toggler || !this.collapse) return;
-
-      if (this.toggler.tagName.toLowerCase() === "a")
-        this.toggler.setAttribute("href", "javascript:void(0)");
-
-      this.toggler.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.isMenuOpen ? this.closeMenu() : this.openMenu();
-      });
-
-      const navLinks = this.collapse.querySelectorAll('.nav-link[href^="#"]');
-      navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          const href = link.getAttribute("href");
-          if (href && href !== "#" && this.isMenuOpen) {
-            setTimeout(() => this.closeMenu(), 100);
-          }
-        });
-      });
-
-      document.addEventListener("click", (e) => {
-        if (
-          this.isMenuOpen &&
-          !this.collapse.contains(e.target) &&
-          !this.toggler.contains(e.target)
-        )
-          this.closeMenu();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && this.isMenuOpen) this.closeMenu();
-      });
-
-      window.addEventListener(
-        "resize",
-        utils.debounce(() => {
-          if (window.innerWidth > 991 && this.isMenuOpen) this.closeMenu();
-        }, 250)
-      );
-    },
-
-    openMenu() {
-      this.isMenuOpen = true;
-      this.toggler.setAttribute("aria-expanded", "true");
-      this.toggler.classList.add("active");
-      this.collapse.classList.add("navbar-open");
-    },
-
-    closeMenu() {
-      this.isMenuOpen = false;
-      this.toggler.setAttribute("aria-expanded", "false");
-      this.toggler.classList.remove("active");
-      this.collapse.classList.remove("navbar-open");
-      document.body.classList.remove("menu-open");
-    },
-  };
-
-  // ====== Smooth Scroll ======
-  const smoothScroll = {
-    init() {
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", (e) => {
-          const href = anchor.getAttribute("href");
-          if (!href || href === "#") return;
-          e.preventDefault();
-
-          const target = document.querySelector(href);
-          if (target) {
-            const navbar = document.querySelector(".navbar");
-            const offset = navbar ? navbar.offsetHeight + 20 : 80;
-            this.scrollToPosition(target.offsetTop - offset);
-          }
-        });
-      });
-    },
-
-    scrollToPosition(position) {
-      const start = window.pageYOffset;
-      const distance = position - start;
-      const duration = Math.abs(distance) > 1000 ? 1200 : 800;
-      let startTime = null;
-
-      const animate = (time) => {
-        if (!startTime) startTime = time;
-        const elapsed = time - startTime;
-        const run = this.easeInOutQuad(elapsed, start, distance, duration);
-        window.scrollTo(0, run);
-        if (elapsed < duration) requestAnimationFrame(animate);
-      };
-      requestAnimationFrame(animate);
-    },
-
-    easeInOutQuad(t, b, c, d) {
+    function ease(t, b, c, d) {
       t /= d / 2;
       if (t < 1) return (c / 2) * t * t + b;
       t--;
       return (-c / 2) * (t * (t - 2) - 1) + b;
-    },
-  };
+    }
 
-  // ====== Navbar Scroll Effects ======
-  const navbar = {
-    init() {
-      const nav = document.querySelector(".navbar");
-      if (!nav) return;
-      window.addEventListener(
-        "scroll",
-        utils.debounce(() => {
-          nav.classList.toggle("scrolled", window.scrollY > 50);
-        }, 10)
-      );
-    },
-  };
+    requestAnimationFrame(animation);
+  }
 
-  // ====== Active Nav Highlight ======
-  const activeNav = {
-    init() {
-      const navLinks = document.querySelectorAll(
-        '.navbar-nav .nav-link[href^="#"]'
-      );
-      const sections = document.querySelectorAll("section[id]");
-      if (!navLinks.length || !sections.length) return;
+  // Wait a bit for page to fully load
+  setTimeout(() => {
+    // Get ALL links with href starting with #
+    const allLinks = document.querySelectorAll("a");
 
-      const update = utils.debounce(() => {
-        const scrollY = window.scrollY + 100;
-        let current = "";
-        sections.forEach((s) => {
-          if (scrollY >= s.offsetTop && scrollY < s.offsetTop + s.offsetHeight)
-            current = s.id;
-        });
-        navLinks.forEach((link) =>
-          link.classList.toggle(
-            "current-section",
-            link.getAttribute("href") === "#" + current
-          )
-        );
-      }, 50);
+    allLinks.forEach((link) => {
+      const href = link.getAttribute("href");
 
-      window.addEventListener("scroll", update);
-      update();
-    },
-  };
+      if (href && href.startsWith("#") && href !== "#") {
+        console.log("Adding listener to:", href);
 
-  // ====== Portfolio Filtering ======
-  const portfolio = {
-    init() {
-      const tabBtns = document.querySelectorAll(".tab-btn");
-      const items = document.querySelectorAll(".portfolio-item");
-      if (!tabBtns.length) return;
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
 
-      tabBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          tabBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
+          console.log("Clicked:", href);
 
-          const filter = btn.dataset.tab;
-          items.forEach((item, i) => {
-            if (filter === "all" || item.dataset.category === filter) {
-              item.style.display = "block";
-              setTimeout(() => {
-                item.style.opacity = "1";
-                item.style.transform = "translateY(0)";
-              }, i * 50);
-            } else {
-              item.style.opacity = "0";
-              item.style.transform = "translateY(30px)";
-              setTimeout(() => {
-                item.style.display = "none";
-              }, 300);
-            }
-          });
-        });
-      });
-    },
-  };
+          if (href === "#home") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            return;
+          }
 
-  // ====== Scroll-triggered Animations (Intersection Observer) ======
-  const scrollAnimations = {
-    init() {
-      const elements = document.querySelectorAll(
-        ".fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down, .scale-in, .rotate-in, .progress-bar, .card-hover"
-      );
-      if (!elements.length) return;
+          const target = document.querySelector(href);
+          if (target) {
+            console.log("Scrolling to:", target);
+            smoothScrollTo(target);
+          } else {
+            console.log("Target not found:", href);
+          }
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("animate");
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      elements.forEach((el) => observer.observe(el));
-    },
-  };
-
-  // ====== Back to Top ======
-  const backToTop = {
-    init() {
-      const btn = document.getElementById("backToTop");
-      if (!btn) return;
-
-      const toggleBtn = utils.debounce(() => {
-        btn.classList.toggle("show", window.scrollY > 300);
-      }, 100);
-
-      window.addEventListener("scroll", toggleBtn);
-
-      btn.addEventListener("click", () => {
-        btn.classList.add("clicked");
-        smoothScroll.scrollToPosition(0);
-        setTimeout(() => btn.classList.remove("clicked"), 300);
-      });
-    },
-  };
-
-  // ====== Contact Form ======
-  const contactForm = {
-    init() {
-      const form = document.querySelector(".contact-form form");
-      if (!form) return;
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-
-        const inputs = form.querySelectorAll(
-          "input[required], select[required], textarea[required]"
-        );
-        let isValid = true;
-        inputs.forEach((input) => {
-          if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add("invalid");
-            setTimeout(() => input.classList.remove("invalid"), 3000);
+          // Close mobile menu
+          const navbarCollapse = document.querySelector(".navbar-collapse");
+          if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
           }
         });
+      }
+    });
 
-        if (isValid) {
-          submitBtn.textContent = "Sending...";
-          submitBtn.disabled = true;
-          setTimeout(() => {
-            submitBtn.textContent = "Message Sent!";
-            submitBtn.style.background = "#10b981";
-            form.reset();
-            setTimeout(() => {
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-              submitBtn.style.background = "";
-            }, 2000);
-          }, 1500);
-        }
+    console.log("Smooth scroll setup complete");
+  }, 500);
+});
+
+// ===== MOBILE NAVBAR ANIMATIONS =====
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  // Ensure hamburger starts in correct state
+  if (navbarToggler) {
+    navbarToggler.setAttribute("aria-expanded", "false");
+  }
+
+  // Handle navbar toggle
+  if (navbarToggler && navbarCollapse) {
+    navbarToggler.addEventListener("click", function () {
+      // Add stagger animation to nav items when opening
+      if (navbarToggler.getAttribute("aria-expanded") === "false") {
+        const navItems = document.querySelectorAll(".navbar-nav .nav-item");
+        navItems.forEach((item, index) => {
+          item.style.animationDelay = `${(index + 1) * 0.1}s`;
+        });
+      }
+    });
+  }
+
+  // Close menu when nav link is clicked
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      if (window.innerWidth <= 991) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+          toggle: false,
+        });
+        bsCollapse.hide();
+      }
+    });
+  });
+
+  // Handle window resize - close menu on desktop
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 991 && navbarCollapse.classList.contains("show")) {
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false,
       });
-    },
-  };
+      bsCollapse.hide();
+    }
+  });
+});
 
-  // ====== Initialize everything ======
-  function initialize() {
-    preloader.init();
-    setTimeout(() => {
-      mobileMenu.init();
-      smoothScroll.init();
-      navbar.init();
-      activeNav.init();
-      portfolio.init();
-      scrollAnimations.init();
-      backToTop.init();
-      contactForm.init();
-      document.body.classList.add("loaded");
-    }, 100);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialize);
+// ===== NAVBAR SCROLL EFFECT =====
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 100) {
+    navbar.classList.add("scrolled");
   } else {
-    initialize();
+    navbar.classList.remove("scrolled");
   }
-})();
+});
+
+// ===== BACK TO TOP BUTTON (FIXED) =====
+const backToTopButton = document.getElementById("backToTop");
+
+// Show/hide button based on scroll position
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    backToTopButton.classList.add("show");
+  } else {
+    backToTopButton.classList.remove("show");
+  }
+});
+
+// Handle back to top click with smooth scroll
+if (backToTopButton) {
+  backToTopButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log("Back to top clicked");
+
+    // Use the same smooth scroll function
+    const startPosition = window.pageYOffset;
+    const distance = -startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, 1000);
+      window.scrollTo(0, run);
+      if (timeElapsed < 1000) requestAnimationFrame(animation);
+    }
+
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  });
+}
+
+// ===== CONTACT FORM =====
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Add your form submission logic here
+      alert("Thank you for your message! We'll get back to you soon.");
+    });
+  }
+});
+
+// ===== NEWSLETTER FORM =====
+document.addEventListener("DOMContentLoaded", function () {
+  const newsletterForm = document.querySelector(".newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Add your newsletter subscription logic here
+      alert("Thank you for subscribing to our newsletter!");
+    });
+  }
+});
+
+// ===== LOADER (if enabled) =====
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    setTimeout(() => {
+      loader.classList.add("fade-out");
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 300);
+    }, 300);
+  }
+});
+
+// ===== NAVBAR ACTIVE LINK (FIXED) =====
+window.addEventListener("scroll", function () {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  let current = "";
+  const scrollPosition = window.pageYOffset + 150; // Offset for better detection
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+
+    if (
+      scrollPosition >= sectionTop &&
+      scrollPosition < sectionTop + sectionHeight
+    ) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
