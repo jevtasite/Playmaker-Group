@@ -359,7 +359,7 @@ window.addEventListener("load", function () {
       setTimeout(() => {
         loader.style.display = "none";
       }, 300);
-    }, 300);
+    }, 100);
   }
 });
 
